@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="arabe">
+<head>
+   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <title> Clavier arabe Virtuel </title>
+  <meta charset="utf-8">
+  <style type="text/css">
+      textarea {
+    resize:none;
+    height:150px;
+  }
+  .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 60px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 90%;
+  margin-left: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.lettre{
+  color: #B60E2A;
+  font-size: 30px
+}
+
+  </style>
+    <link rel="icon" type="image/x-icon" href="http://quizmendel.cba.pl/17499134_462725467401538_3893996982695364961_n.png">
+</head>
+<body><br><br>
+  <img src="http://quizmendel.cba.pl/clavier_logo.gif" style="margin-left: 500px;"><br><br>
+<form>
+  
+<select name="la langue" style="color: #380636">
+<option value="arabic" style="color: #380636"> choisir une langue </option>
+<option value="arabic" style="color: #380636"> arabic   </option>
+</select>
+</form><br><br>
+<style type="text/css">
+  form {
+    margin-left:  580px;
+  }
+</style>
+  <div style="text-align: center;">
+
+   <textarea  id="list"  name="list" cols="68"  style="color: blue;font-size: 28px;font-family: arial;text-align: right;padding: 10px;"></textarea>
+  
+
+  </div>
+  <br>
+  <div style="margin-left: 43%">
+    <button style="color: grey ;margin-left:  1%;margin-right: -30px;" onclick="myButton()"> effacer </button>
+<div class="tooltip">
+<button style="color: grey ;margin-left:  140%" onclick="myFunction()" onmouseout="outFunc()">
+  <span class="tooltiptext" id="myTooltip"> Copy </span>
+  Copier
+  </button>
+</div>
+    <br><br><br>
+  </div>
+  <div style="text-align: center;">
+      <button id="a" class="lettre" > ع   </button>
+      <button id="b" class="lettre" > ظ  </button>
+      <button id="c" class="lettre" > ط  </button>
+      <button id="d" class="lettre" >  ض    </button>
+      <button id="f" class="lettre" > ص   </button>
+      <button id="g" class="lettre" > ش   </button>
+      <button id="h" class="lettre" >س   </button>
+      <button id="i" class="lettre" >  ز </button>
+      <button id="j" class="lettre"> ر </button>
+      <button id="k" class="lettre">  ذ  </button>
+      <button id="l" class="lettre"> د  </button>
+      <button id="m" class="lettre"> خ  </button>
+      <button id="n" class="lettre">ح  </button>
+      <button id="o" class="lettre"> ج  </button>
+      <button id="p" class="lettre"> ث   </button>
+
+            <button id="calma" class="lettre"> ت   </button>
+
+      <button id="q" class="lettre">ب   </button>
+      <button id="r" class="lettre"> ا </button><br><br>
+      <button id="s" class="lettre"> ى   </button>
+      <button id="t" class="lettre">  ئ   </button>
+      <button id="u" class="lettre"> ؤ   </button>
+      <button id="v" class="lettre">   ة  </button>
+      <button id="w" class="lettre"> ي   </button>
+      <button id="x" class="lettre"> و   </button>
+      <button id="y" class="lettre">  ه  </button>
+      <button id="z" class="lettre"> ن  </button>
+      <button id="ilyas" class="lettre"> م  </button>
+      <button id="chouaib" class="lettre"> ل  </button>
+      <button id="yassine" class="lettre"> ك  </button>
+      <button id="barcelona" class="lettre"> ق    </button>
+      <button id="clavier" class="lettre"> ف   </button>
+      <button id="arabe" class="lettre" > غ    </button> 
+
+      <br><br>
+          <button style="color: #B51404 ;margin-left: 0%; width: 320px;height: 40px;text-align: center;font-size: 30px;" onclick="espace()" id="espace"> espace </button><br>
+          <div style="margin-left: -32px;">
+          <button style="color:white; border:none;background-color: #4c8bf5;margin-left:40px;padding:5px 6px 5px 6px;outline:none;font-size:20px;" onclick="google();">Google</button>
+           <button style="background-color: red;border:0;color:white;padding:5px 6px 5px 6px;outline:none;font-size:20px;margin-top: 20px;margin-left: 10px; " onclick="YouTube()">YouTube</button>
+           </div>
+   </div>
+
+
+  <script type="text/javascript">
+    var list=document.getElementById("list");
+    // hna fin katgol ljs ana fax aywrk 3la chi botona l id dyalha howa a wla z wla e exécuter function a wla z wla e
+    document.getElementById("a").addEventListener("click", a);
+    document.getElementById("b").addEventListener("click", b);
+    document.getElementById("c").addEventListener("click", c);
+    document.getElementById("d").addEventListener("click", d);
+       document.getElementById("f").addEventListener("click", f);
+    document.getElementById("g").addEventListener("click", g);
+    document.getElementById("h").addEventListener("click", h);
+   document.getElementById("i").addEventListener("click", i);
+    document.getElementById("j").addEventListener("click", j);
+    document.getElementById("k").addEventListener("click", k);
+    document.getElementById("l").addEventListener("click", l);
+   document.getElementById("m").addEventListener("click", m);
+    document.getElementById("n").addEventListener("click", n);
+    document.getElementById("o").addEventListener("click", o);
+    document.getElementById("p").addEventListener("click", p);
+   document.getElementById("q").addEventListener("click", q);
+    document.getElementById("r").addEventListener("click", r);
+    document.getElementById("s").addEventListener("click", s);
+    document.getElementById("t").addEventListener("click", t);
+    document.getElementById("calma").addEventListener("click", calma);
+
+  document.getElementById("u").addEventListener("click", u);
+    document.getElementById("v").addEventListener("click", v);
+   document.getElementById("w").addEventListener("click", w);
+    document.getElementById("x").addEventListener("click", x);
+    document.getElementById("y").addEventListener("click", y);
+    document.getElementById("z").addEventListener("click", z);
+   document.getElementById("ilyas").addEventListener("click", ilyas);
+    document.getElementById("chouaib").addEventListener("click", chouaib);
+    document.getElementById("yassine").addEventListener("click", yassine);
+    document.getElementById("barcelona").addEventListener("click", barcelona);
+   document.getElementById("clavier").addEventListener("click", clavier);
+    document.getElementById("arabe").addEventListener("click", arabe);
+
+
+    document.getElementById("espace").addEventListener("click", espace);
+
+    //hna fin katgol ach ndir ila galo liya exécuter a wla z wla e
+    function a() {
+      var textnode = document.createTextNode("ع");
+      document.getElementById("list").appendChild(textnode);
+    }
+     function b() {
+      var textnode = document.createTextNode("ظ");
+      document.getElementById("list").appendChild(textnode);
+    }
+     function c() {
+      var textnode = document.createTextNode("ط");
+      document.getElementById("list").appendChild(textnode);
+    }
+       function d() {
+      var textnode = document.createTextNode("ض");
+      document.getElementById("list").appendChild(textnode);
+    }
+       function f() {
+      var textnode = document.createTextNode("ص");
+      document.getElementById("list").appendChild(textnode);
+    }
+    function g() {
+      var textnode = document.createTextNode("ش");
+      document.getElementById("list").appendChild(textnode);
+    }
+  function calma() {
+      var textnode = document.createTextNode("ت");
+      document.getElementById("list").appendChild(textnode);
+    }
+    function h() {
+      var textnode = document.createTextNode("س");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+    function i() {
+      var textnode = document.createTextNode("ز");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+    function j() {
+      var textnode = document.createTextNode("ر");
+      document.getElementById("list").appendChild(textnode);
+    }
+    function k() {
+      var textnode = document.createTextNode("ذ");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+    function l() {
+      var textnode = document.createTextNode("د");
+      document.getElementById("list").appendChild(textnode);
+    }
+  function m() {
+      var textnode = document.createTextNode("خ");
+      document.getElementById("list").appendChild(textnode);
+    }
+  function n() {
+      var textnode = document.createTextNode("ح");
+      document.getElementById("list").appendChild(textnode);
+    }
+ function o() {
+      var textnode = document.createTextNode("ج");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+  function p() {
+      var textnode = document.createTextNode("ث");
+      document.getElementById("list").appendChild(textnode);
+    }
+  function q() {
+      var textnode = document.createTextNode("ب");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+  function r() {
+      var textnode = document.createTextNode("ا");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+ function s() {
+      var textnode = document.createTextNode("ى");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+ function t() {
+      var textnode = document.createTextNode("ئ");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+ function u() {
+      var textnode = document.createTextNode("ؤ");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+ function v() {
+      var textnode = document.createTextNode("ة");
+      document.getElementById("list").appendChild(textnode);
+    } function w() {
+      var textnode = document.createTextNode("ي");
+      document.getElementById("list").appendChild(textnode);
+    } function x() {
+      var textnode = document.createTextNode("و");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+
+
+ function y() {
+      var textnode = document.createTextNode("ه");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+ 
+
+
+
+
+ function z() {
+      var textnode = document.createTextNode("ن");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+
+ function ilyas() {
+      var textnode = document.createTextNode("م");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+ function chouaib() {
+      var textnode = document.createTextNode("ل");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+ function yassine() {
+      var textnode = document.createTextNode("ك");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+
+
+
+ function barcelona() {
+      var textnode = document.createTextNode("ق");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+
+
+
+ function clavier() {
+      var textnode = document.createTextNode("ف");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+
+
+
+
+
+ function arabe() {
+      var textnode = document.createTextNode("غ");
+      document.getElementById("list").appendChild(textnode);
+    }    function espace(){
+      var textnode = document.createTextNode(" ");
+      document.getElementById("list").appendChild(textnode);
+    }
+
+  </script>
+
+
+
+
+
+<script>
+function myFunction() {
+  var copyText = document.getElementById("list");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy ";
+}
+
+
+  function myButton() {
+    location.reload();
+  }
+
+</script>
+<script type="text/javascript">
+  function google(){
+  var query = $.trim($("#list").val());
+  query = query.replace(/\s+/g, '+');
+  url = 'http://www.google.com/search?q=' + query;
+  window.open(url,'_blank');
+}
+function YouTube(){
+  var query = $.trim($("#list").val());
+    query = query.replace(/\s+/g, '+');
+    url = 'https://www.youtube.com/results?search_query=' + query;
+    window.open(url,'_blank');
+  }
+//the best part 
+document.body.addEventListener("keydown", function(event) {
+    if (event.keyCode ==  65) {
+        d();
+    }else if(event.keyCode ==  90){
+      f();
+    }else if(event.keyCode ==  69){
+      p();
+    }else if(event.keyCode ==  82){
+      barcelona();
+    }else if(event.keyCode ==  84){
+      clavier();
+    }else if(event.keyCode ==  89){
+      arabe();
+    }else if(event.keyCode ==  85){
+      a();
+    }else if(event.keyCode ==  73){
+      y();
+    }else if(event.keyCode ==  79){
+      m();
+    }else if(event.keyCode ==  80){
+      n();
+    }else if(event.keyCode ==  221){
+      o();
+    }else if(event.keyCode ==  186){
+      l();
+    }else if(event.keyCode ==  81){
+      g();
+    }else if(event.keyCode ==  83){
+      h();
+    }else if(event.keyCode ==  68){
+      w();
+    }else if(event.keyCode ==  70){
+      q();
+    }else if(event.keyCode ==  71){
+      chouaib();
+    }else if(event.keyCode ==  72){
+      r();
+    }else if(event.keyCode ==  74){
+      calma();
+    }else if(event.keyCode ==  75){
+      z();
+    }else if(event.keyCode ==  76){
+      ilyas();
+    }else if(event.keyCode ==  77){
+      yassine();
+    }else if(event.keyCode ==  192){
+      c();
+    }else if(event.keyCode ==  220){
+      k();
+    }else if(event.keyCode ==  87){
+      t();
+    }else if(event.keyCode ==  67){
+      u();
+    }else if(event.keyCode ==  86){
+      j();
+    }else if(event.keyCode ==  66){
+      j();
+    }else if(event.keyCode ==  78){
+      s();
+    }else if(event.keyCode ==  190){
+      x();
+    }else if(event.keyCode ==  191){
+      i();
+    }else if(event.keyCode ==  223){
+      b();
+    }else if(event.keyCode ==  32){
+      espace();
+    } 
+});
+</script>
+
+</body>
+</html>
