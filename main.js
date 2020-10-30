@@ -1,5 +1,6 @@
     var list=document.getElementById("list");
     // hna fin katgol ljs ana fax aywrk 3la chi botona l id dyalha howa a wla z wla e exécuter function a wla z wla e
+window.onload=function(){
     document.getElementById("a").addEventListener("click", a);
     document.getElementById("b").addEventListener("click", b);
     document.getElementById("c").addEventListener("click", c);
@@ -332,3 +333,4 @@ document.body.addEventListener("keydown", function(event) {
       espace();
     } 
 });
+}
